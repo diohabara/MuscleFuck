@@ -1,2 +1,5 @@
 # muscle_fuck
-https://esotech.notion.site/BDM-Musclefuck-0483b0cdfb0542ef92df9975ef1ec8f3
+
+- [Design Doc](https://esotech.notion.site/BDM-Musclefuck-0483b0cdfb0542ef92df9975ef1ec8f3)
+- [Presentation](https://docs.google.com/presentation/d/1rN5PLomJHd9JZrjKUzma4-PGZXhdor9di5YT2XHEMSU/edit)
+
