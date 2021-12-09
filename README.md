@@ -17,9 +17,14 @@ poetry run pysen run lint
 poetry run pysen run format
 ```
 
+## test
+
+```bash
+poetry run pytest
+```
+
 ## execute
 
 ```bash
 poetry run python src/main.py
 ```
-
