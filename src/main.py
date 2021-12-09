@@ -1,5 +1,10 @@
+from muscle_fuck import MuscleFuck
+
+
 def main() -> None:
-    print("MuscleFuck")
+    helloworld = "data/helloworld.bf"
+    mf = MuscleFuck()
+    mf.run_from_file(helloworld)
 
 
 if __name__ == "__main__":

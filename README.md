@@ -10,11 +10,10 @@ pyenv install
 poetry install
 ```
 
-## lint/format
+## lint
 
 ```bash
 poetry run pysen run lint
-poetry run pysen run format
 ```
 
 ## test
