@@ -3,6 +3,11 @@
 - [Design Doc](https://esotech.notion.site/BDM-Musclefuck-0483b0cdfb0542ef92df9975ef1ec8f3)
 - [Presentation](https://docs.google.com/presentation/d/1rN5PLomJHd9JZrjKUzma4-PGZXhdor9di5YT2XHEMSU/edit)
 
+## deps
+
+- [pyenv](https://pypi.org/project/poetry/)
+- [poetry](https://github.com/pyenv/pyenv#automatic-installer)
+
 ## setup
 
 ```bash
