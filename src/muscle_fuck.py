@@ -15,6 +15,9 @@ class MuscleFuck:
     stack_count: int = field(default=0)
     bracemap: Dict[int, int] = field(default_factory=lambda: {})
 
+    def __del__(self):
+        print("")
+
     def _err(self, message: str) -> None:
         logging.exception(message)
 
@@ -37,10 +40,12 @@ class MuscleFuck:
             print(chr(self.memory[self.memory_ptr]), end="")
         elif ch == ",":
             self.memory[self.memory_ptr] = ord(sys.stdin.read(1))
-        elif ch == "[" and self.memory[self.memory_ptr] == 0:
-            self.program_ptr = self.bracemap[self.program_ptr]
-        elif ch == "]" and self.memory[self.memory_ptr] != 0:
-            self.program_ptr = self.bracemap[self.program_ptr]
+        elif ch == "[":
+            if self.memory[self.memory_ptr] == 0:
+                self.program_ptr = self.bracemap[self.program_ptr]
+        elif ch == "]":
+            if self.memory[self.memory_ptr] != 0:
+                self.program_ptr = self.bracemap[self.program_ptr]
         else:
             self._err(f"Does not accept this character: {ch=}")
 
