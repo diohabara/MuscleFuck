@@ -23,7 +23,7 @@ class MuscleFuck:
 
     def run_from_program(self, program: str) -> str:
         self.program = program
-        self.bracemap = self._create_brace_mapping(program)
+        self.brace_mapping = self._create_brace_mapping(program)
         while self.program_ptr < len(self.program):
             self._read_char(self.program[self.program_ptr])
             self.program_ptr += 1
@@ -80,9 +80,9 @@ class MuscleFuck:
             self.memory[self.memory_ptr] = ord(sys.stdin.read(1))
         elif ch == "[":
             if self.memory[self.memory_ptr] == 0:
-                self.program_ptr = self.bracemap[self.program_ptr]
+                self.program_ptr = self.brace_mapping[self.program_ptr]
         elif ch == "]":
             if self.memory[self.memory_ptr] != 0:
-                self.program_ptr = self.bracemap[self.program_ptr]
+                self.program_ptr = self.brace_mapping[self.program_ptr]
         else:
             self._err(f"Does not accept this character: {ch=}")
