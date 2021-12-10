@@ -11,7 +11,7 @@ def main() -> None:
         # TODO: display time and run-length distance
         print("hello")
 
-    # TODO: fill in the buttons' IDs
+    print("Start")
     button1 = Button(5)
     button2 = Button(6)
     button3 = Button(13)
@@ -35,20 +35,28 @@ def main() -> None:
                 program = []
             is_running = not is_running
         if button1.is_pressed:
+            print("1")
             program.append(">")
         if button2.is_pressed:
+            print("2")
             program.append("<")
         if button3.is_pressed:
+            print("3")
             program.append("+")
         if button4.is_pressed:
+            print("4")
             program.append("-")
         if button5.is_pressed:
+            print("5")
             program.append(".")
         if button6.is_pressed:
+            print("6")
             program.append(",")
         if button7.is_pressed:
+            print("7")
             program.append("[")
         if button8.is_pressed:
+            print("8")
             program.append("]")
 
 

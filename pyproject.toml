@@ -6,8 +6,10 @@ authors = ["diohabara <diohabara@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.7"
 gpiozero = "^1.6.2"
+pigpio = "^1.78"
+"RPi.GPIO" = "^0.7.0"
 
 [tool.poetry.dev-dependencies]
 pysen = {version = "0.10.1", extras = ["lint"]}
