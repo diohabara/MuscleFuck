@@ -1,15 +1,18 @@
 import time
-from typing import Dict, List
+from typing import List
 
 from gpiozero import Button
-
 from muscle_fuck import MuscleFuck
 
 
 def main() -> None:
     def display_time() -> None:
-        # TODO: display time and run-length distance
-        print("hello")
+        if not time_list:
+            print("Welcome to this contest")
+        else:
+            time_list.sort()
+            for i, t in enumerate(time_list):
+                print(f"{t} ranked in {i+1}")
 
     print("Start")
     button1 = Button(5)
@@ -25,12 +28,17 @@ def main() -> None:
     mf = MuscleFuck()
     program: List[str] = []
     is_running = False
+    start: float
+    time_list: List[float] = []
 
     while True:
         if button9.is_pressed:
             if is_running:
                 display_time()
+                start = time.time()
             else:
+                time_list.append(time.time() - start)
+                start = 0.0
                 mf.run_from_program("".join(program))
                 program = []
             is_running = not is_running
