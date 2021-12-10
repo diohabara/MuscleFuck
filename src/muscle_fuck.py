@@ -18,9 +18,6 @@ class MuscleFuck:
     def __del__(self) -> None:
         print("")
 
-    def _err(self, message: str) -> None:
-        logging.exception(message)
-
     def run_from_program(self, program: str) -> str:
         self.program = program
         self.brace_mapping = self._create_brace_mapping(program)
@@ -43,9 +40,12 @@ class MuscleFuck:
         self.program_ptr, self.memory_ptr, self.output_ptr = 0, 0, 0
         self.stack_count = 0
 
+    def _err(self, message: str) -> None:
+        logging.exception(message)
+
     def _fuck_filter(self, code: str) -> str:
         return "".join(
-            filter(lambda x: x in [".", ",", "[", "]", "<", ">", "+", "-"], code)
+            filter(lambda x: x in [">", "<", "+", "-", ".", ",", "[", "]"], code)
         )
 
     def _create_brace_mapping(self, code: str) -> Dict[int, int]:
