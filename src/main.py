@@ -5,12 +5,13 @@ from typing import List
 from gpiozero import Button
 from muscle_fuck import MuscleFuck
 
+is_running = False
+start: float
+program: List[str] = []
+
 
 def main() -> None:
     mf = MuscleFuck()
-    program: List[str] = []
-    is_running = False
-    start: float
     time_list: List[float] = []
 
     def display_time() -> None:
@@ -22,41 +23,41 @@ def main() -> None:
                 print(f"You score {t} ranked in {i+1}")
 
     def button1_pressed() -> None:
-        print("1")
+        print(">")
         program.append(">")
 
     def button2_pressed() -> None:
-        print("2")
+        print("<")
         program.append("<")
 
     def button3_pressed() -> None:
-        print("3")
+        print("+")
         program.append("+")
 
     def button4_pressed() -> None:
-        print("4")
+        print("-")
         program.append("-")
 
     def button5_pressed() -> None:
-        print("5")
+        print(".")
         program.append(".")
 
     def button6_pressed() -> None:
-        print("6")
+        print(",")
         program.append(",")
 
     def button7_pressed() -> None:
-        print("7")
+        print("[")
         program.append("[")
 
     def button8_pressed() -> None:
-        print("8")
+        print("]")
         program.append("]")
 
     def button9_pressed() -> None:
-        nonlocal start
-        nonlocal program
-        nonlocal is_running
+        global start
+        global program
+        global is_running
         if is_running:
             display_time()
             start = time.time()
