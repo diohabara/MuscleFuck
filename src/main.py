@@ -11,59 +11,59 @@ from muscle_fuck import MuscleFuck
 @dataclass
 class OnRaspberry:
     mf: MuscleFuck = MuscleFuck()
-    time_list: List[float] = field(default_factory=lambda: [])
+    scoreboard: List[float] = field(default_factory=lambda: [])
     is_running: float = field(default=False)
-    start: float = field(default=0.0)
+    start: float = field(default_factory=lambda: time.time())
     program: List[str] = field(default_factory=lambda: [])
 
-    def display_time(self) -> None:
-        if not self.time_list:
+    def _display_scoreboard(self) -> None:
+        if not self.scoreboard:
             print("Welcome to this contest")
         else:
-            self.time_list.sort()
-            for i, t in enumerate(self.time_list):
-                print(f"You score {t} ranked in {i+1}")
+            self.scoreboard.sort()
+            for i, t in enumerate(self.scoreboard):
+                print(f"Your score is {t}: rank {i+1}")
 
     def run(self) -> None:
         def button1_pressed() -> None:
-            print(">")
+            print(">", end="")
             self.program.append(">")
 
         def button2_pressed() -> None:
-            print("<")
+            print("<", end="")
             self.program.append("<")
 
         def button3_pressed() -> None:
-            print("+")
+            print("+", end="")
             self.program.append("+")
 
         def button4_pressed() -> None:
-            print("-")
+            print("-", end="")
             self.program.append("-")
 
         def button5_pressed() -> None:
-            print(".")
+            print(".", end="")
             self.program.append(".")
 
         def button6_pressed() -> None:
-            print(",")
+            print(",", end="")
             self.program.append(",")
 
         def button7_pressed() -> None:
-            print("[")
+            print("[", end="")
             self.program.append("[")
 
         def button8_pressed() -> None:
-            print("]")
+            print("]", end="")
             self.program.append("]")
 
         def button9_pressed() -> None:
             if self.is_running:
-                self.display_time()
+                self._display_scoreboard()
                 self.start = time.time()
                 self.program = []
             else:
-                self.time_list.append(time.time() - self.start)
+                self.scoreboard.append(time.time() - self.start)
                 self.mf.run_from_program("".join(self.program))
             self.is_running = not self.is_running
 
