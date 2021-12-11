@@ -4,7 +4,6 @@ from signal import pause
 from typing import List
 
 from gpiozero import Button
-
 from muscle_fuck import MuscleFuck
 
 
@@ -12,17 +11,14 @@ from muscle_fuck import MuscleFuck
 class OnRaspberry:
     mf: MuscleFuck = MuscleFuck()
     scoreboard: List[float] = field(default_factory=lambda: [])
-    is_running: float = field(default=False)
     start: float = field(default_factory=lambda: time.time())
     program: List[str] = field(default_factory=lambda: [])
 
-    def _display_scoreboard(self) -> None:
-        if not self.scoreboard:
-            print("Welcome to this contest")
-        else:
-            self.scoreboard.sort()
-            for i, t in enumerate(self.scoreboard):
-                print(f"Your score is {t}: rank {i+1}")
+    def _display_scoreboard(self, elapsed_time: float) -> None:
+        self.scoreboard.append(elapsed_time)
+        self.scoreboard.sort()
+        for i, t in enumerate(self.scoreboard):
+            print(f"Your score is {t:.2f} sec: rank {i+1}")
 
     def run(self) -> None:
         def button1_pressed() -> None:
@@ -58,14 +54,13 @@ class OnRaspberry:
             self.program.append("]")
 
         def button9_pressed() -> None:
-            if self.is_running:
-                self._display_scoreboard()
-                self.start = time.time()
+            if self.program:
+                helloworld = self.mf.run_from_program("".join(self.program))
                 self.program = []
-            else:
-                self.scoreboard.append(time.time() - self.start)
-                self.mf.run_from_program("".join(self.program))
-            self.is_running = not self.is_running
+            if helloworld == "Hello, World!":
+                elapsed_time = time.time() - self.start
+                self._display_scoreboard(elapsed_time)
+            self.start = time.time()
 
         button1 = Button(5)
         button2 = Button(6)
@@ -86,7 +81,8 @@ class OnRaspberry:
         button7.when_pressed = button7_pressed
         button8.when_pressed = button8_pressed
         button9.when_pressed = button9_pressed
-        print("Start")
+        print("Welcome to this contest")
+        print('Please input MuscleFuck code that prints "Hello, World!"')
         pause()
 
 
