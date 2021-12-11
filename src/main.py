@@ -77,15 +77,15 @@ def main() -> None:
     button8 = Button(20)
     button9 = Button(21)
 
-    button1.is_pressed = button1_pressed
-    button2.is_pressed = button2_pressed
-    button3.is_pressed = button3_pressed
-    button4.is_pressed = button4_pressed
-    button5.is_pressed = button5_pressed
-    button6.is_pressed = button6_pressed
-    button7.is_pressed = button7_pressed
-    button8.is_pressed = button8_pressed
-    button9.is_pressed = button9_pressed
+    button1.when_pressed = button1_pressed
+    button2.when_pressed = button2_pressed
+    button3.when_pressed = button3_pressed
+    button4.when_pressed = button4_pressed
+    button5.when_pressed = button5_pressed
+    button6.when_pressed = button6_pressed
+    button7.when_pressed = button7_pressed
+    button8.when_pressed = button8_pressed
+    button9.when_pressed = button9_pressed
     print("Start")
     pause()
 
