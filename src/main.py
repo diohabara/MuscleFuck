@@ -55,6 +55,7 @@ class OnRaspberry:
             self.program.append("]")
 
         def button9_pressed() -> None:
+            helloworld = ""
             if self.program:
                 helloworld = self.mf.run_from_program("".join(self.program))
                 self.program = []
