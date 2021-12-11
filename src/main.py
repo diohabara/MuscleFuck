@@ -56,6 +56,7 @@ class OnRaspberry:
 
         def button9_pressed() -> None:
             if not self.program:
+                print("Your program is empty")
                 return
             print(self.program, flush=True)
             helloworld = self.mf.run_from_program("".join(self.program))
