@@ -4,7 +4,6 @@ from signal import pause
 from typing import List
 
 from gpiozero import Button
-
 from muscle_fuck import MuscleFuck
 
 
@@ -58,7 +57,7 @@ class OnRaspberry:
             if not self.program:
                 print("Your program is empty")
                 return
-            print(self.program, flush=True)
+            print("\n" + "".join(self.program), flush=True)
             helloworld = self.mf.run_from_program("".join(self.program))
             print(helloworld, flush=True)
             if helloworld == "Hello, World!":
