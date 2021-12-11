@@ -23,40 +23,41 @@ class OnRaspberry:
 
     def run(self) -> None:
         def button1_pressed() -> None:
-            print(">", end="")
+            print(">", end="", flush=True)
             self.program.append(">")
 
         def button2_pressed() -> None:
-            print("<", end="")
+            print("<", end="", flush=True)
             self.program.append("<")
 
         def button3_pressed() -> None:
-            print("+", end="")
+            print("+", end="", flush=True)
             self.program.append("+")
 
         def button4_pressed() -> None:
-            print("-", end="")
+            print("-", end="", flush=True)
             self.program.append("-")
 
         def button5_pressed() -> None:
-            print(".", end="")
+            print(".", end="", flush=True)
             self.program.append(".")
 
         def button6_pressed() -> None:
-            print(",", end="")
+            print(",", end="", flush=True)
             self.program.append(",")
 
         def button7_pressed() -> None:
-            print("[", end="")
+            print("[", end="", flush=True)
             self.program.append("[")
 
         def button8_pressed() -> None:
-            print("]", end="")
+            print("]", end="", flush=True)
             self.program.append("]")
 
         def button9_pressed() -> None:
             helloworld = ""
             if self.program:
+                print(self.program, flush=True)
                 helloworld = self.mf.run_from_program("".join(self.program))
                 self.program = []
             print(helloworld)
