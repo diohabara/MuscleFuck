@@ -55,10 +55,10 @@ class OnRaspberry:
             self.program.append("]")
 
         def button9_pressed() -> None:
-            helloworld = ""
-            if self.program:
-                print(self.program, flush=True)
-                helloworld = self.mf.run_from_program("".join(self.program))
+            if not self.program:
+                return
+            print(self.program, flush=True)
+            helloworld = self.mf.run_from_program("".join(self.program))
             print(helloworld)
             if helloworld == "Hello, World!":
                 elapsed_time = time.time() - self.start
