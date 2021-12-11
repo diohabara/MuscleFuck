@@ -19,7 +19,7 @@ def main() -> None:
         else:
             time_list.sort()
             for i, t in enumerate(time_list):
-                print(f"{t} ranked in {i+1}")
+                print(f"You score {t} ranked in {i+1}")
 
     def button1_pressed() -> None:
         print("1")
@@ -60,11 +60,10 @@ def main() -> None:
         if is_running:
             display_time()
             start = time.time()
+            program = []
         else:
             time_list.append(time.time() - start)
-            start = 0.0
             mf.run_from_program("".join(program))
-            program = []
         is_running = not is_running
 
     button1 = Button(5)

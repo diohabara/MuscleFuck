@@ -21,12 +21,12 @@ pyenv install
 poetry install
 ```
 
-## lint/test
+## format/lint/test
 
 Check if there is a cause of bugs.
 
 ```bash
-poetry run pysen run lint
+poetry run pysen run format lint
 poetry run pytest
 ```
 
