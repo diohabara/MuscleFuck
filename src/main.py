@@ -1,19 +1,20 @@
 import time
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from signal import pause
 from typing import List
 
 from gpiozero import Button
+
 from muscle_fuck import MuscleFuck
 
 
 @dataclass
 class OnRaspberry:
     mf = MuscleFuck()
-    time_list: List[float] = []
-    is_running = False
-    start: float = 0.0
-    program: List[str] = []
+    time_list: List[float] = field(default_factory=lambda: [])
+    is_running = field(default=False)
+    start: float = field(default=0.0)
+    program: List[str] = field(default_factory=lambda: [])
 
     def display_time(self) -> None:
         if not self.time_list:
