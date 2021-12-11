@@ -59,11 +59,11 @@ class OnRaspberry:
             if self.program:
                 print(self.program, flush=True)
                 helloworld = self.mf.run_from_program("".join(self.program))
-                self.program = []
             print(helloworld)
             if helloworld == "Hello, World!":
                 elapsed_time = time.time() - self.start
                 self._display_scoreboard(elapsed_time)
+            self.program = []
             self.start = time.time()
 
         button1 = Button(5)
