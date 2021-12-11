@@ -1,9 +1,8 @@
 import time
+from signal import pause
 from typing import List
 
 from gpiozero import Button
-from singal import pause
-
 from muscle_fuck import MuscleFuck
 
 
