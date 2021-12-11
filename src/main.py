@@ -4,6 +4,7 @@ from signal import pause
 from typing import List
 
 from gpiozero import Button
+
 from muscle_fuck import MuscleFuck
 
 
@@ -57,6 +58,7 @@ class OnRaspberry:
             if self.program:
                 helloworld = self.mf.run_from_program("".join(self.program))
                 self.program = []
+            print(helloworld)
             if helloworld == "Hello, World!":
                 elapsed_time = time.time() - self.start
                 self._display_scoreboard(elapsed_time)
