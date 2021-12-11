@@ -10,9 +10,9 @@ from muscle_fuck import MuscleFuck
 
 @dataclass
 class OnRaspberry:
-    mf = MuscleFuck()
+    mf: MuscleFuck = MuscleFuck()
     time_list: List[float] = field(default_factory=lambda: [])
-    is_running = field(default=False)
+    is_running: float = field(default=False)
     start: float = field(default=0.0)
     program: List[str] = field(default_factory=lambda: [])
 
