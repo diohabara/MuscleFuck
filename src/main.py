@@ -60,7 +60,7 @@ class OnRaspberry:
                 return
             print(self.program, flush=True)
             helloworld = self.mf.run_from_program("".join(self.program))
-            print(helloworld)
+            print(helloworld, flush=True)
             if helloworld == "Hello, World!":
                 elapsed_time = time.time() - self.start
                 self._display_scoreboard(elapsed_time)
